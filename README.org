@@ -1,0 +1,14 @@
+#+TITLE: guix-notes
+#+AUTHOR: Peter Polidoro
+#+EMAIL: peter@polidoro.io
+
+* Library Information
+- Name :: guix-notes
+- Version :: 1.0.0
+- License :: BSD
+- URL :: https://github.com/guix-janelia/guix-notes
+- Author :: Peter Polidoro
+- Email :: peter@polidoro.io
+
+** Description
+
