@@ -18,11 +18,20 @@ git clone https://git.savannah.gnu.org/git/guix.git
 
 cd guix
 git pull
+git checkout -b update
 guix shell --pure -D guix
 ./bootstrap
 ./configure --localstatedir=/var
 make
 exit
+
+#+END_SRC
+
+** Edit Guix Package
+
+#+BEGIN_SRC sh
+
+./pre-inst-env guix edit PKG
 
 #+END_SRC
 
@@ -34,11 +43,33 @@ exit
 
 #+END_SRC
 
-** Edit Guix Package
+** Lint Guix Package
 
 #+BEGIN_SRC sh
 
-./pre-inst-env guix edit PKG
+./pre-inst-env guix lint PKG
 
 #+END_SRC
+
+** Test Guix Package
+
+#+BEGIN_SRC sh
+
+./pre-inst-env guix shell --pure PKG -- PKG
+
+#+END_SRC
+
+** Stage and Commit Changes
+
+- Run magit to stage changes and commit
+- run yas-minor-mode-on
+- run yas-reload-all to reload snippets
+- run yas-insert-snippet and choose guix-commit-message-update-package
+- W to create patch
+
+** Email Patch
+
+- Send email to guix-patches@gnu.org
+- Use commit message as subject, .e.g. "gnu: kicad: Update to 6.0.4."
+- Attach patch to email by opening dired, marking patch file, then C-c RET C-a
 
