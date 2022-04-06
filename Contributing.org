@@ -70,6 +70,6 @@ git checkout -b PKG
 ** Email Patch
 
 - Send email to guix-patches@gnu.org
-- Use commit message as subject, .e.g. "gnu: kicad: Update to 6.0.4."
+- Open patch file and copy subject to email, .e.g. "[PATCH] gnu: kicad: Update to 6.0.4."
 - Attach patch to email by opening dired, marking patch file, then C-c RET C-a
 
