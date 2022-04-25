@@ -32,6 +32,8 @@ exit
 
 git checkout -b PKG
 ./pre-inst-env guix edit PKG
+# enable guix-devel-mode in emacs
+# to indent and highlight properlyy
 
 #+END_SRC
 
@@ -40,6 +42,22 @@ git checkout -b PKG
 #+BEGIN_SRC sh
 
 ./pre-inst-env guix build PKG
+
+#+END_SRC
+
+** Size Guix Package
+
+#+BEGIN_SRC sh
+
+./pre-inst-env guix size PKG
+
+#+END_SRC
+
+** Check that dependent packages are not affected
+
+#+BEGIN_SRC sh
+
+./pre-inst-env guix refresh --list-dependent PKG
 
 #+END_SRC
 
@@ -65,6 +83,7 @@ git checkout -b PKG
 - run yas-minor-mode-on
 - run yas-reload-all to reload snippets
 - run yas-insert-snippet and choose guix-commit-message-update-package
+- C-c C-c to commit
 - W to create patch
 
 ** Email Patch
