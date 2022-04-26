@@ -92,3 +92,13 @@ git checkout -b PKG
 - Open patch file and copy subject to email, .e.g. "[PATCH] gnu: kicad: Update to 6.0.4."
 - Attach patch to email by opening dired, marking patch file, then C-c RET C-a
 
+** Mulitple New Packages that Depend on Each Other
+
+- Add one new package to scm file starting with dependencies
+- Stage and commit single package changes
+- Create patch file
+- Repeat for every new package ending with final dependent package
+- Send cover letter to guix-patches@gnu.org with subject “Add [name of final package] and dependencies”
+- Wait for NNN@debbugs.gnu.org infomation in confirmation email
+- Send one patch per package to NNN@debbugs.gnu.org starting with dependencies
+
