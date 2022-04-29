@@ -26,12 +26,33 @@ exit
 
 #+END_SRC
 
-** Edit Guix Package
+** Create Repository Branch
 
 #+BEGIN_SRC sh
 
 git checkout -b PKG
-./pre-inst-env guix edit PKG
+
+#+END_SRC
+
+** Edit Or Create Guix Package
+
+*** Edit
+
+#+BEGIN_SRC sh
+
+guix edit PKG
+# enable guix-devel-mode in emacs
+# to indent and highlight properlyy
+
+#+END_SRC
+
+*** Create
+
+#+BEGIN_SRC sh
+
+guix import pypi -r python_pkg
+# Copy output and make note of significant dependency (DEP)
+guix edit DEP
 # enable guix-devel-mode in emacs
 # to indent and highlight properlyy
 
