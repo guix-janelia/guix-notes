@@ -18,10 +18,10 @@ git clone https://git.savannah.gnu.org/git/guix.git
 
 cd guix
 git pull
-guix shell --pure -D guix
+guix shell git:send-email -D guix --pure
 ./bootstrap
 ./configure --localstatedir=/var
-make
+make -j
 exit
 
 #+END_SRC
@@ -63,6 +63,7 @@ guix edit DEP
 #+BEGIN_SRC sh
 
 ./pre-inst-env guix build PKG
+./pre-inst-env guix build PKG --no-grafts --check
 
 #+END_SRC
 
@@ -94,7 +95,7 @@ guix edit DEP
 
 #+BEGIN_SRC sh
 
-./pre-inst-env guix shell --pure PKG -- PKG
+./pre-inst-env guix shell --pure PKG
 
 #+END_SRC
 
@@ -108,6 +109,16 @@ guix edit DEP
 - W to create patch
 
 ** Email Patch
+
+*** Command Line
+
+#+BEGIN_SRC sh
+
+git send-email --to=guix-patches@gnu.org 0001-gnu-*.patch
+
+#+END_SRC
+
+*** Emacs
 
 - Send email to guix-patches@gnu.org
 - Open patch file and copy subject to email, .e.g. "[PATCH] gnu: kicad: Update to 6.0.4."
