@@ -7,8 +7,10 @@
 ** CLOSED [PATCH] gnu: kicad: Update to 5.1.12.
 
 ** CLOSED [PATCH] gnu: kicad: Update to 6.0.4.
+** SUBMITTED [PATCH] gnu: kicad: Update to 6.0.5.
 
 * python
+
 
 ** CLOSED [PATCH] gnu: Add python-ajsonrpc.
 

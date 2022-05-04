@@ -40,9 +40,9 @@ git checkout -b PKG
 
 #+BEGIN_SRC sh
 
-guix edit PKG
-# enable guix-devel-mode in emacs
-# to indent and highlight properlyy
+./pre-inst-env guix edit PKG
+# make sure guix-devel-mode is enabled in emacs
+# to indent and highlight properly
 
 #+END_SRC
 
