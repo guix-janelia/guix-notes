@@ -18,7 +18,7 @@ git clone https://git.savannah.gnu.org/git/guix.git
 
 cd guix
 git pull
-guix shell git:send-email -D guix --pure
+guix shell -D guix --pure
 ./bootstrap
 ./configure --localstatedir=/var
 make -j
@@ -114,6 +114,7 @@ guix edit DEP
 
 #+BEGIN_SRC sh
 
+guix shell git:send-email
 git send-email --to=guix-patches@gnu.org 0001-gnu-*.patch
 
 #+END_SRC
