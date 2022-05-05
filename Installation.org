@@ -1,0 +1,14 @@
+#+TITLE: guix-notes Installation
+#+AUTHOR: Peter Polidoro
+#+EMAIL: peter@polidoro.io
+
+* Installation
+
+** Foreign Distribution
+
+#+BEGIN_SRC sh
+
+git clone https://git.savannah.gnu.org/git/guix.git
+
+#+END_SRC
+
