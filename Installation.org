@@ -6,9 +6,50 @@
 
 ** Foreign Distribution
 
+*** Foreign Distribution Installation
+
+**** Partitions
+
+| Name     | File System    | Mount Point  | Size    | Used      | Flags     |
+|----------+----------------+--------------+---------+-----------+-----------|
+| EFI BOOT | fat32          | /boot/efi    | 1 GiB   | 7.9 MiB   | boot,esp  |
+| BIOSGRUB | grub2 core.img |              | 32 MiB  | ---       | bios_grub |
+| SWAP     | linux-swap     |              | 60 GiB  | 0         | swap      |
+| XUBUNTU  | btrfs          | /,/gnu/store | 200 GiB | 43.94 GiB |           |
+| GUIX     | btrfs          |              | 250 GiB | 128 KiB   |           |
+
+**** BTRFS
+
+Btrfs provides dynamic allocation of inodes. It allocates inodes to files as and
+when required and this helps to prevent the depletion of inodes in the event you
+have very many small files on the filesystem.
+
+*** Guix Binary Installation
+
 #+BEGIN_SRC sh
 
-git clone https://git.savannah.gnu.org/git/guix.git
+cd /tmp
+wget https://git.savannah.gnu.org/cgit/guix.git/plain/etc/guix-install.sh
+chmod +x guix-install.sh
+sudo ./guix-install.sh
 
 #+END_SRC
 
+*** Application Setup
+
+#+BEGIN_SRC sh
+
+guix install glibc-locales
+export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
+
+#+END_SRC
+
+*** Substitute Server Authorization
+
+#+BEGIN_SRC sh
+
+cd ~
+git clone https://git.savannah.gnu.org/git/guix.git
+sudo guix archive --authorize < ~/guix/etc/substitutes/ci.guix.gnu.org.pub
+
+#+END_SRC
