@@ -63,9 +63,22 @@ guix edit DEP
 #+BEGIN_SRC sh
 
 ./pre-inst-env guix build PKG
-./pre-inst-env guix build PKG --no-grafts --check
+./pre-inst-env guix build PKG --no-grafts --check --log-file
 
 #+END_SRC
+
+*** Failing Tests
+
+Sometimes tests fail when they are not included in they pypi source.
+
+#+BEGIN_SRC sh
+
+./pre-inst-env guix build --source PKG
+
+#+END_SRC
+
+Check the source to see if the tests are included. If not, use git-fetch to
+download the original source repository rather than the source from pypi.
 
 ** Size Guix Package
 
