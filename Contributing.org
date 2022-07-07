@@ -147,3 +147,6 @@ git send-email --to=guix-patches@gnu.org *.patch
 - Wait for NNN@debbugs.gnu.org infomation in confirmation email
 - Send one patch per package to NNN@debbugs.gnu.org starting with dependencies
 
+** Find older version of package
+
+[[https://data.guix.gnu.org/repository/1/branch/master/package/kicad][kicad versions]]
