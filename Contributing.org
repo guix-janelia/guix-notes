@@ -18,6 +18,7 @@ git clone https://git.savannah.gnu.org/git/guix.git
 
 cd guix
 git pull
+git clean -xdf
 guix shell -D guix --pure
 ./bootstrap
 ./configure --localstatedir=/var
