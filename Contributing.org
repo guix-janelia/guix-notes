@@ -102,6 +102,14 @@ download the original source repository rather than the source from pypi.
 
 #+END_SRC
 
+** Style Guix Package
+
+#+BEGIN_SRC sh
+
+./pre-inst-env guix style PKG
+
+#+END_SRC
+
 ** Test Guix Package
 
 #+BEGIN_SRC sh
