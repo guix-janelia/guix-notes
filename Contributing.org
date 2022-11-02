@@ -17,8 +17,7 @@ git clone https://git.savannah.gnu.org/git/guix.git
 #+BEGIN_SRC sh
 
 cd guix
-git pull
-git clean -xdf
+git pull && git clean -xdf
 guix shell -D guix --pure -- sh -c "./bootstrap && ./configure --localstatedir=/var && make -j$(nproc)"
 
 #+END_SRC
