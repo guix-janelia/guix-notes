@@ -123,6 +123,7 @@ download the original source repository rather than the source from pypi.
 - select commit for a single patch or set of commits for a patch series
 - W c C-m l c
 - write cover letter
+- save cover letter
 
 ** Email Patch
 
