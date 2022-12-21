@@ -120,10 +120,24 @@ download the original source repository rather than the source from pypi.
 - run yas-reload-all to reload snippets
 - run yas-insert-snippet and choose guix-commit-message-update-package
 - C-c C-c to commit
+
+** Create Patch
+
+*** Magit
+
 - select commit for a single patch or set of commits for a patch series
 - W c C-m l c
 - write cover letter
 - save cover letter
+
+*** Command line
+
+#+BEGIN_SRC sh
+
+guix shell git
+git format-patch master
+
+#+END_SRC
 
 ** Email Patch
 
