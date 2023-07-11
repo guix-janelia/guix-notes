@@ -121,6 +121,11 @@ download the original source repository rather than the source from pypi.
 - run yas-insert-snippet and choose guix-commit-message-update-package
 - C-c C-c to commit
 
+** Branch Spinoff
+
+If you accidentally commited in the master branch, use branch spinoff to create
+new branch and move commits into it.
+
 ** Create Patch
 
 *** Magit
@@ -134,7 +139,7 @@ download the original source repository rather than the source from pypi.
 
 #+BEGIN_SRC sh
 
-guix shell git
+guix shell git:send-email
 git format-patch master
 
 #+END_SRC
