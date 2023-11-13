@@ -140,7 +140,7 @@ new branch and move commits into it.
 #+BEGIN_SRC sh
 
 guix shell git:send-email
-git format-patch master
+git format-patch --base=master master
 
 #+END_SRC
 
