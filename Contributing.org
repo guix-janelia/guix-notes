@@ -124,7 +124,7 @@ download the original source repository rather than the source from pypi.
 ** Branch Spinoff
 
 If you accidentally commited in the master branch, use branch spinoff to create
-new branch and move commits into it.
+new branch and move commits into it. "b s"
 
 ** Create Patch
 
