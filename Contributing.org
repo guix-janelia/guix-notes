@@ -7,27 +7,21 @@
 ** Download Guix Repository
 
 #+BEGIN_SRC sh
-
-git clone https://git.savannah.gnu.org/git/guix.git
-
+git clone https://git.savannah.gnu.org/git/guix
 #+END_SRC
 
 ** Bootstrap and Configure Guix
 
 #+BEGIN_SRC sh
-
 cd guix
 git checkout master && git clean -xdf && git checkout . && git pull
 guix shell -D guix --pure -- sh -c "./bootstrap && ./configure --localstatedir=/var && make -j$(nproc)"
-
 #+END_SRC
 
 ** Create Repository Branch
 
 #+BEGIN_SRC sh
-
 git checkout -b PKG
-
 #+END_SRC
 
 ** Edit Or Create Guix Package
@@ -35,29 +29,23 @@ git checkout -b PKG
 *** Edit
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix edit PKG
 # make sure guix-devel-mode is enabled in emacs
 # to indent and highlight properly
-
 #+END_SRC
 
 *** Import
 
 #+BEGIN_SRC sh
-
 guix import pypi -r python_pkg
 guix import elpa -r -a melpa emacs-pkg
-
 #+END_SRC
 
 ** Build Guix Package
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix build PKG
 ./pre-inst-env guix build PKG --no-grafts --check --log-file
-
 #+END_SRC
 
 *** Failing Tests
@@ -65,9 +53,7 @@ guix import elpa -r -a melpa emacs-pkg
 Sometimes tests fail when they are not included in they pypi source.
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix build --source PKG
-
 #+END_SRC
 
 Check the source to see if the tests are included. If not, use git-fetch to
@@ -76,41 +62,31 @@ download the original source repository rather than the source from pypi.
 ** Size Guix Package
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix size PKG
-
 #+END_SRC
 
 ** Check that dependent packages are not affected
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix refresh --list-dependent PKG
-
 #+END_SRC
 
 ** Lint Guix Package
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix lint PKG
-
 #+END_SRC
 
 ** Style Guix Package
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix style PKG
-
 #+END_SRC
 
 ** Test Guix Package
 
 #+BEGIN_SRC sh
-
 ./pre-inst-env guix shell --pure PKG
-
 #+END_SRC
 
 ** Stage and Commit Changes
@@ -138,21 +114,22 @@ new branch and move commits into it. "b s"
 *** Command line
 
 #+BEGIN_SRC sh
-
 guix shell git:send-email
-git format-patch --base=master master --cover-letter
-
+git format-patch --base=master master -o outgoing --cover-letter
 #+END_SRC
+
+Edit outgoing/0000-cover-letter.patch
 
 ** Email Patch
 
 *** Command Line
 
 #+BEGIN_SRC sh
-
 guix shell git:send-email
-git send-email --to=guix-patches@gnu.org *.patch
-
+git send-email --to=guix-patches@gnu.org outgoing/0000-cover-letter.patch --annotate
+rm outgoing/0000-cover-letter.patch # we don't want to resend it!
+git send-email outgoing/*.patch --to=ISSUE_NUMBER@debbugs.gnu.org
+rm -rf outgoing # we don't need these anymore
 #+END_SRC
 
 *** Emacs
