@@ -29,7 +29,7 @@ git checkout -b PKG
 *** Edit
 
 #+BEGIN_SRC sh
-./pre-inst-env guix edit PKG
+guix shell -D guix -- ./pre-inst-env guix edit PKG
 # make sure guix-devel-mode is enabled in emacs
 # to indent and highlight properly
 #+END_SRC
@@ -44,8 +44,8 @@ guix import elpa -r -a melpa emacs-pkg
 ** Build Guix Package
 
 #+BEGIN_SRC sh
-./pre-inst-env guix build PKG
-./pre-inst-env guix build PKG --no-grafts --check --log-file
+guix shell -D guix -- ./pre-inst-env guix build PKG
+guix shell -D guix -- ./pre-inst-env guix build PKG --no-grafts --check --log-file
 #+END_SRC
 
 *** Failing Tests
@@ -53,7 +53,7 @@ guix import elpa -r -a melpa emacs-pkg
 Sometimes tests fail when they are not included in they pypi source.
 
 #+BEGIN_SRC sh
-./pre-inst-env guix build --source PKG
+guix shell -D guix -- ./pre-inst-env guix build --source PKG
 #+END_SRC
 
 Check the source to see if the tests are included. If not, use git-fetch to
@@ -62,31 +62,31 @@ download the original source repository rather than the source from pypi.
 ** Size Guix Package
 
 #+BEGIN_SRC sh
-./pre-inst-env guix size PKG
+guix shell -D guix -- ./pre-inst-env guix size PKG
 #+END_SRC
 
 ** Check that dependent packages are not affected
 
 #+BEGIN_SRC sh
-./pre-inst-env guix refresh --list-dependent PKG
+guix shell -D guix -- ./pre-inst-env guix refresh --list-dependent PKG
 #+END_SRC
 
 ** Lint Guix Package
 
 #+BEGIN_SRC sh
-./pre-inst-env guix lint PKG
+guix shell -D guix -- ./pre-inst-env guix lint PKG
 #+END_SRC
 
 ** Style Guix Package
 
 #+BEGIN_SRC sh
-./pre-inst-env guix style PKG
+guix shell -D guix -- ./pre-inst-env guix style PKG
 #+END_SRC
 
 ** Test Guix Package
 
 #+BEGIN_SRC sh
-./pre-inst-env guix shell --pure PKG
+guix shell -D guix -- ./pre-inst-env guix shell --pure PKG
 #+END_SRC
 
 ** Stage and Commit Changes
